@@ -20,13 +20,7 @@ namespace WpfApplication1
     public partial class Klasa : Window
     {
         Point[] p = new Point[21];
-        char[] my_char = new char[100];
-        bool[,] tp = new bool[21, 21];
-        int[,] wag = new int[21, 21];
         int[,] pary_w ;
-        String[] tablica = new String[50];
-
-        TextBlock textBlock = new TextBlock();
         private const double _sred = 25;
         private const int _Rozm = 12;
 
