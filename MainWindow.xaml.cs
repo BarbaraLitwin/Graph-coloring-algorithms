@@ -19,6 +19,10 @@ namespace WpfApplication1
 {
     public partial class Klasa : Window
     {
+
+        int a, b, c;
+        int lw;
+        int w, k, po;
         Point[] p = new Point[21];
         char[] my_char = new char[100];
         bool[,] tp = new bool[21, 21];
