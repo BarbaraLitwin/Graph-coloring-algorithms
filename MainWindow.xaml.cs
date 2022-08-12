@@ -18,19 +18,12 @@ using System.IO;
 namespace WpfApplication1
 {
     public partial class Klasa : Window
-    {
-
-        int a, b, c;
-        int lw;
-        int w, k, po;
-        Point[] p = new Point[21];
+    {        Point[] p = new Point[21];
         char[] my_char = new char[100];
         bool[,] tp = new bool[21, 21];
         int[,] wag = new int[21, 21];
         int[,] pary_w ;
-        String wartosc1;
         String[] tablica = new String[50];
-        int s;
 
         TextBlock textBlock = new TextBlock();
         private const double _sred = 25;
@@ -51,7 +44,6 @@ namespace WpfApplication1
         private int i1;
         private int i2;
         private int i3;
-        private int i4;
         private int i5;
         //private List<Kolory> kol;
         //private Kolory kolo;
@@ -104,7 +96,6 @@ namespace WpfApplication1
             i2 = 0;
             i3 = 0;
             i5 = 0;
-            wartosc1 = "";
             zwykly = new SolidColorBrush(Colors.Blue);
         }
         private void myGrid_MouseUp(object sender, MouseButtonEventArgs e)
@@ -875,29 +866,11 @@ namespace WpfApplication1
 
         public void clear()
         {
-            for (int a = 0; a < lw + 1; a++)
-                for (int b = 0; b < lw + 1; b++)
-                    tp[a, b] = false;
 
-            for (int a = 0; a <= lw; a++)
-                for (int b = 0; b <= lw; b++)
-                    t[a, b] = 0;
-            //for (int i = 0; i <= 30; i++)
-            //    komiw[i] = "";
-            //for (int a = 0; a < 20; a++)
-            //    for (int b = 0; b < 20; b++)
-            //        wag[a, b] = 0;
 
             textBox1.Text = "";
             tekst.Content = "";
-            //Rectangle rect = new Rectangle();
-            //myGrid.Children.Remove(rect);   //hehe
-            //rect.Fill = Brushes.White;
-            //Canvas.SetTop(rect, -100);
-            //rect.Height = 450;
-            //rect.Width = 500;
-            //myGrid.Children.Add(rect);
-            //textBox1.Text = "";
+
 
         }
 
@@ -945,77 +918,11 @@ namespace WpfApplication1
             //textBox1.AppendText("");
             for (int i = 1; i <= 19; i++) odwiedzony[i] = false;
             l = 0;
-            Hamilton(po);
-        }
-        public void Hamilton(int v)
-        {
-            q.Add(v);
-            if (q.Count == lw)
-            {
-                bool test = false;
-                for (int i = 1; i <= lw; i++)
-                    if (t[i, v] == po)
-                    {
-                        test = true; break;
-                    }
-                if (test) { wartosc = "Cykl "; l++; } else wartosc = "Ścieżka ";
-                wartosc += "Hamiltona: " + "\r\n";
-                for (int i = 0; i < q.Count(); i++)
-                {
-                    wartosc += Convert.ToString(q[i] + ", ");
-                    //if (test) komiw[l] += (q[i] + ", ");
-                }
-              //  String[] tablica = new String[50];
-                
-                textBox1.AppendText(wartosc);
-                textBox1.AppendText(Environment.NewLine);
-                tekst.Content += Environment.NewLine;
-              tekst.Content += wartosc.ToString();
-            }
-            else
-            {
-                odwiedzony[v] = true;
-                for (int i = 1; i <= lw; i++)
-                {
-                    if (!odwiedzony[t[i, v]] && t[i, v] != 0 ) Hamilton(t[i, v]);
-                }
-                odwiedzony[v] = false;
-            }
-            q.RemoveAt(q.Count() - 1);
+        
         }
 
-        private void button9_Click(object sender, RoutedEventArgs e)
-        {
-            int l1 = 0, l2 = 0;
-            int suma = 0;
-            char[] my_kom = new char[40];
-            char[] cha = new char[40];
-            for (int i = 1; i <= l; i++)
-            {
 
-                suma = 0;
-
-                //String my_ch = komiw[i];
-                //for (int y = 0; y < my_ch.Length; y++)
-                //{
-                //    cha[y] = my_ch[y];
-                //}
-                l1 = 0; l2 = 0;
-                for (int z = 0; z < 3 * w - 3; z += 3)
-                {
-                    l1 = Convert.ToInt32(cha[z]) - 48;
-                    l2 = Convert.ToInt32(cha[z + 3]) - 48;
-                    if (l2 == 0) l2 = po;
-                    suma += wag[l1, l2];
-                    // textBox7.AppendText(" - (" + wag[l1,l2] + ")" );
-                    // textBox7.AppendText(" - (" + l1 + ")" + " - (" + l2 + ")");
-                }
-
-                suma += wag[po, l2];
-                //textBox7.AppendText(" - (" + suma + ")" + "\r\n");
-                //textBox7.AppendText("\r\n");
-            }
-        }
+ 
 
        
 
